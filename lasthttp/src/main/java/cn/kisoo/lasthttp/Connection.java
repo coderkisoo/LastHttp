@@ -20,7 +20,10 @@ public interface Connection {
      */
     Socket socket();
 
-
+    /**
+     * 返回Connection协商好的协议, 如果没有协商，默认HTTP1.0，甚至在远程主机使用http1.1的时候，这个方法
+     * 也会返回HTTP1.1{@link Protocol#HTTP_1_1}
+     */
     Protocol protocol();
 
     /***
