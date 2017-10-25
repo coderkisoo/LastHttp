@@ -6,6 +6,7 @@ package cn.kisoo.lasthttp;
 
 import android.support.annotation.Nullable;
 
+import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -71,4 +72,35 @@ public final class MediaType {
 
         return new MediaType(string, type, subtype, charset);
     }
+
+    public String type(){
+        return type;
+    }
+
+    public String subtype(){
+        return subtype;
+    }
+
+    public @Nullable Charset charset(){
+        return charset(null);
+    }
+
+    public @Nullable Charset charset(@Nullable Charset defaultValue){
+        try {
+            return charset != null ? Charset.forName(charset):defaultValue;
+        }catch (IllegalArgumentException e){
+            return defaultValue;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return mediaType;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object other){
+        return other instanceof MediaType && ((MediaType)other).mediaType.equals(mediaType);
+    }
+
 }
