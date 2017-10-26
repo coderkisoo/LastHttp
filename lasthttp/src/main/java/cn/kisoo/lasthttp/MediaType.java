@@ -37,9 +37,7 @@ public final class MediaType {
         this.charset = charset;
     }
 
-    public static
-    @Nullable
-    MediaType parse(String string) {
+    public static @Nullable MediaType parse(String string) {
         Matcher typeSubType = TYPE_SUBTYPE.matcher(string);
         if (!typeSubType.lookingAt()) return null;
         String type = typeSubType.group(1).toLowerCase(Locale.US);
